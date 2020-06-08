@@ -1,8 +1,7 @@
 node
 {
   stage ("GIT Checkout"){
-    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'git \'https://github.com/Devendranathashok/my-app.git\'']]])
-   }
+   git 'https://github.com/Devendranathashok/my-app.git'
   stage("MAVEN BUILD"){
     sh 'mvn clean package'
 }
