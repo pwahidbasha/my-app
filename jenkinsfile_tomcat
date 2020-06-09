@@ -1,0 +1,11 @@
+node{
+stage (' GIT'){
+  git 'https://github.com/Devendranathashok/my-app.git'
+}
+stage ('MAVEN Build') {
+sh 'mvn clean package'
+}
+stage ('deploy'){
+deploy adapters: [tomcat7(credentialsId: 'tomcat_creds', path: '', url: 'http://3.133.118.187:8080/')], contextPath: 'myweb-1.0.6', war: '**/*war'
+}
+}
