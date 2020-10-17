@@ -4,7 +4,7 @@
 	<groupId>in.javahome</groupId>
 	<artifactId>myweb</artifactId>
 	<packaging>war</packaging>
-	<version>1.0.6</version>
+	<version>1.0.3</version>
 	<name>my-app</name>
 	<url>http://maven.apache.org</url>
 
@@ -39,6 +39,23 @@
 <properties>
     <sonar.host.url>http://192.168.58.140:4000</sonar.host.url>
 </properties>
+
+  <repositories>
+    <repository>
+      <id>nexus-group</id>
+      <url>http://18.222.126.80:8081/repository/maven-public/</url>
+    </repository>
+  </repositories>
+  <distributionManagement>
+    <snapshotRepository>
+      <id>nexus-snapshots</id>
+      <url>http://18.222.126.80:8081/repository/maven-snapshots/</url>
+    </snapshotRepository>
+    <repository>
+      <id>nexus-releases</id>
+      <url>http://18.222.126.80:8081/repository/maven-releases/</url>
+    </repository>
+  </distributionManagement>
 	
 <build>
     <plugins>
@@ -58,5 +75,6 @@
         </plugin>
     </plugins>
 </build>
+
 	
 </project>
