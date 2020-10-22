@@ -3,9 +3,7 @@ node{
       git 'https://github.com/Devendranathashok/my-app.git'
   }
    stage('BUILD'){
-    def mvnHome= toolname:'maven',type:'maven'
-	  def mvnCMD=$mvnHome/bin/mvn
-    sh "${mvnCMD}clean package"
+    sh "mvn clean package"
    }
    stage('Deploy'){
       deploy adapters: [tomcat7(credentialsId: 'tomcatcreds', path: '', url: 'http://18.216.26.19:8080')], contextPath: 'demoapp', onFailure: false, war: '**/*.war'
