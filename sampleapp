@@ -1,0 +1,33 @@
+pipeline {
+    agent any 
+    tools {
+        maven 'maven3'
+    }
+    stages{
+        stage('build'){
+        	steps{
+        		  sh script:'mvn clean package'
+        	}
+        }
+        stage('upload war to nexus '){
+        	steps{
+        		  nexusArtifactUploader artifacts: [
+        		  	[
+        		  		artifactId: 'myweb', classifier: '', 
+        		  		file: 'target/myweb-0.0.1.war', 
+        		  		type: 'war'
+
+        		  	]
+        		], 
+        		credentialsId: 'nexus3', 
+        		groupId: 'in.javahome', 
+        		nexusUrl: 'localhost:8081/', 
+        		nexusVersion: 'nexus3',
+        		protocol: 'http', 
+        		repository: 'sampleapp-release', 
+        		version: '1.0.3'
+
+        	}
+        }
+    }
+}    
