@@ -1,9 +1,16 @@
 pipeline {
+    agent any 
+    tools {
+        maven 'maven3'
+    }
     stages{
         stage('build'){
-        		  sh script:'mvn clean packages
+        	steps{
+        		  sh script:'mvn clean package'
+        	}
         }
         stage('upload war to nexus '){
+        	steps{
         		  nexusArtifactUploader artifacts: [
         		  	[
         		  		artifactId: 'myweb', classifier: '', 
@@ -18,7 +25,9 @@ pipeline {
         		nexusVersion: 'nexus3',
         		protocol: 'http', 
         		repository: 'sampleapp-release', 
-        		version: '1.0.3',
+        		version: '1.0.3'
+
+        	}
         }
     }
 }    
