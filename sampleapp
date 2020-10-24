@@ -1,8 +1,4 @@
-pipeline {
-    agent any
-    tools {
-        maven 'maven3'
-    }
+node{
     stages{
         stage('build'){
         	steps{
