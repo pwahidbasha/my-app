@@ -1,6 +1,4 @@
-pipeline {
-    agent any 
-   
+node{
     stages{
          stage('Compile-Package'){
             // Get maven home path
@@ -27,5 +25,4 @@ pipeline {
 
         	}
         }
-    }
 }    
