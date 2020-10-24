@@ -8,7 +8,7 @@ node {
       nexusArtifactUploader artifacts: [
         [
           artifactId: 'myweb', classifier: '', 
-          file: 'my-app/target/myweb-0.0.1.war', 
+          file: 'target/myweb-0.0.1.war', 
           type: 'war'
         ]
       ], 
